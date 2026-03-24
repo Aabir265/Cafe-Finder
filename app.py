@@ -39,6 +39,7 @@ def home():
                     "location" : f"{lat},{lng}",
                     "radius" : 6000,
                     "type" : "cafe",
+                    "keyword" : "coffee cafe",
                     "key": API_KEY,
                 }
                 try:
