@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cafe.css') }}">
+    <title>Document</title>
+    </head>
+<body>
+    <h1> Cafe Finder</h1>
+    <p>Find the best cafes in your area!</p>
+    <p>Use our search tool to discover new cafes and read reviews from other customers.</p>
+     <form method="POST">
+        <input type="text" name="location" class = "search-box" placeholder="Enter your location">
+        <button type="submit">Search For Cafes</button>
+     </form>
+    <main>
+    {% if cafes %}
+        {% for cafe in cafes %}
+        <div class="cafe-card">
+                            {% if cafe.photo %}
+                                <img src="{{ cafe.photo }}" alt="Photo of {{ cafe.name }}" class="cafe-photo">
+                            {% else %}
+                                <div class="cafe-photo-placeholder">📷 No photo available</div>
+                            {% endif %}
+        </div>
+        <h3>{{ cafe.name }}</h3>
+
+            <p>⭐ Rating: {{ cafe.rating }}</p>
+
+            <p>📍 {{ cafe.address }}</p>
+            </div>
+            {% endfor %}
+            {% elif location %}
+            <p>No cafes found in the specified location.</p>
+            {% endif %}
+    </main>
+    <footer>
+        <p>&copy; 2026 Cafe Finder. All rights reserved.</p>
+    </footer>
+    </body>
+</html>
